@@ -59,6 +59,36 @@ export default new Router({
               ],
             },
             {
+              path: 'customer',
+              component: RouterComponent,
+              redirect: 'customer/all',
+              children: [
+                {
+                  path: 'all',
+                  component: () => import(
+                    /* webpackChunkName: "main-customer" */ './views/main/customer/Customers.vue'),
+                },
+                {
+                  path: 'edit/:id',
+                  name: 'main-customer-edit',
+                  component: () => import(
+                    /* webpackChunkName: "main-customer-edit" */ './views/main/customer/EditCustomer.vue'),
+                },
+                {
+                  path: 'create',
+                  name: 'main-customer-create',
+                  component: () => import(
+                    /* webpackChunkName: "main-customer-create" */ './views/main/customer/CreateCustomer.vue'),
+                },
+                {
+                  path: 'delete/:id',
+                  name: 'main-customer-delete',
+                  component: () => import(
+                    /* webpackChunkName: "main-customer-delete" */ './views/main/customer/DeleteCustomer.vue'),
+                },
+              ],
+            },
+            {
               path: 'admin',
               component: () => import(/* webpackChunkName: "main-admin" */ './views/main/admin/Admin.vue'),
               redirect: 'admin/users/all',

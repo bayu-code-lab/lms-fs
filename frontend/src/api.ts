@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { apiUrl } from '@/env';
-import { IUserProfile, IUserProfileUpdate, IUserProfileCreate } from './interfaces';
+import { IUserProfile, IUserProfileUpdate, IUserProfileCreate, ICustomer, ICustomerUpdate, ICustomerCreate } from './interfaces';
 
 function authHeaders(token: string) {
   return {
@@ -41,5 +41,17 @@ export const api = {
       new_password: password,
       token,
     });
+  },
+  async getCustomers(token: string) {
+    return axios.get<ICustomer[]>(`${apiUrl}/api/v1/customers/`, authHeaders(token));
+  },
+  async updateCustomer(token: string, id: number, data: ICustomerUpdate) {
+    return axios.put(`${apiUrl}/api/v1/customers/${id}`, data, authHeaders(token));
+  },
+  async createCustomer(token: string, data: ICustomerCreate) {
+    return axios.post(`${apiUrl}/api/v1/customers/`, data, authHeaders(token));
+  },
+  async deleteCustomer(token: string, id: number) {
+    return axios.delete(`${apiUrl}/api/v1/customers/${id}`, authHeaders(token));
   },
 };
