@@ -79,3 +79,22 @@ export interface IBookCreate {
     author?: string;
     quantity?: number;
 }
+
+export interface IBookTransaction {
+    id: number;
+    customer_id: number;
+    customer_name: string;
+    book_id: number;
+    book_title: string;
+    total: number;
+    day: number;
+    is_returned: boolean;
+    date_returned: string;
+}
+export interface IBookTransactionCreate {
+    id: number;
+    customer_id: number;
+    book_id: number;
+    total: number;
+    day: number;
+}

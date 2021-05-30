@@ -5,3 +5,4 @@ from .user import User, UserCreate, UserInDB, UserUpdate
 from .customer import Customer, CustomerCreate, CustomerUpdate, CustomerInDB
 from .book_category import BookCategory, BookCategoryCreate, BookCategoryUpdate, BookCategoryInDB
 from .book import Book, BookCreate, BookUpdate, BookInDB
+from .book_transaction import BookTransaction, BookTransactionCreate, BookTransactionUpdate, BookTransactionInDB

@@ -65,7 +65,7 @@ import { dispatchGetBookCategory } from '@/store/book_category/actions';
 @Component
 export default class EditBook extends Vue {
     public valid = true;
-    public selectedCategories = {}
+    public selectedCategories = {};
     public title: string = '';
     public desc: string = '';
     public author: string = '';
@@ -88,7 +88,7 @@ export default class EditBook extends Vue {
             this.desc = this.book.desc;
             this.author = this.book.desc;
             this.quantity = Number(this.book.quantity);
-            this.selectedCategories = this.categories.find((category)=> category.id === this.book?.category_id) || {};
+            this.selectedCategories = this.categories.find((category) => category.id === this.book?.category_id) || {};
         }
     }
 

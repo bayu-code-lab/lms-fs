@@ -62,7 +62,7 @@
           <v-subheader>Customer</v-subheader>
           <v-list-tile to="/main/customer/all">
             <v-list-tile-action>
-              <v-icon>group</v-icon>
+              <v-icon>supervised_user_circle</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title>Manage Customers</v-list-tile-title>
@@ -74,7 +74,7 @@
           <v-subheader>Book</v-subheader>
           <v-list-tile v-show="hasAdminAccess" to="/main/book-category/all">
             <v-list-tile-action>
-              <v-icon>gavel</v-icon>
+              <v-icon>category</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title>Book Category</v-list-tile-title>
@@ -86,6 +86,26 @@
             </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title>Books</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+        <v-divider></v-divider>
+        <v-list subheader>
+          <v-subheader>Transaction</v-subheader>
+          <v-list-tile v-show="hasAdminAccess" to="#">
+            <v-list-tile-action>
+              <v-icon>file_upload</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>Borrowing</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile to="#">
+            <v-list-tile-action>
+              <v-icon>file_download</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>Returning</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
