@@ -89,6 +89,66 @@ export default new Router({
               ],
             },
             {
+              path: 'book-category',
+              component: RouterComponent,
+              redirect: 'book-category/all',
+              children: [
+                {
+                  path: 'all',
+                  component: () => import(
+                    /* webpackChunkName: "main-customer" */ './views/main/book_category/BookCategories.vue'),
+                },
+                {
+                  path: 'edit/:id',
+                  name: 'main-book-category-edit',
+                  component: () => import(
+                    /* webpackChunkName: "main-customer-edit" */ './views/main/book_category/EditBookCategory.vue'),
+                },
+                {
+                  path: 'create',
+                  name: 'main-book-category-create',
+                  component: () => import(
+                    /* webpackChunkName: "main-customer-create" */ './views/main/book_category/CreateBookCategory.vue'),
+                },
+                {
+                  path: 'delete/:id',
+                  name: 'main-book-category-delete',
+                  component: () => import(
+                    /* webpackChunkName: "main-customer-delete" */ './views/main/book_category/DeleteBookCategory.vue'),
+                },
+              ],
+            },
+            {
+              path: 'book',
+              component: RouterComponent,
+              redirect: 'book/all',
+              children: [
+                {
+                  path: 'all',
+                  component: () => import(
+                    /* webpackChunkName: "main-book" */ './views/main/book/Books.vue'),
+                },
+                {
+                  path: 'edit/:id',
+                  name: 'main-book-edit',
+                  component: () => import(
+                    /* webpackChunkName: "main-book-edit" */ './views/main/book/EditBook.vue'),
+                },
+                {
+                  path: 'create',
+                  name: 'main-book-create',
+                  component: () => import(
+                    /* webpackChunkName: "main-book-create" */ './views/main/book/CreateBook.vue'),
+                },
+                {
+                  path: 'delete/:id',
+                  name: 'main-book-delete',
+                  component: () => import(
+                    /* webpackChunkName: "main-book-delete" */ './views/main/book/DeleteBook.vue'),
+                },
+              ],
+            },
+            {
               path: 'admin',
               component: () => import(/* webpackChunkName: "main-admin" */ './views/main/admin/Admin.vue'),
               redirect: 'admin/users/all',

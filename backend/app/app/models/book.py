@@ -7,13 +7,16 @@ from app.db.base_class import Base
 
 if TYPE_CHECKING:
     from .user import User  # noqa: F401
+    from .book_category import BookCategory  # noqa: F402
 
 
-class Customer(Base):
+class Book(Base):
     id = Column(Integer, primary_key=True, index=True)
-    customer_id = Column(String, unique=True, index=True, nullable=False)
-    full_name = Column(String, index=True, nullable=False)
-    address = Column(String, index=True, nullable=False)
+    title = Column(String, index=True, nullable=False)
+    desc = Column(String, index=True, nullable=False)
+    category_id = Column(Integer, ForeignKey("bookcategory.id"), nullable=False)
+    author = Column(String, index=True, nullable=False)
+    quantity = Column(Integer, index=True, nullable=False)
     created_by = Column(Integer, ForeignKey("user.id"), nullable=False)
     created_date = Column(DateTime, default=datetime.utcnow(), nullable=False)
     updated_by = Column(Integer, ForeignKey("user.id"), nullable=True)

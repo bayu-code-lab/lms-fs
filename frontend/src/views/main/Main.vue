@@ -69,6 +69,26 @@
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
+        <v-divider></v-divider>
+        <v-list subheader>
+          <v-subheader>Book</v-subheader>
+          <v-list-tile v-show="hasAdminAccess" to="/main/book-category/all">
+            <v-list-tile-action>
+              <v-icon>gavel</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>Book Category</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile to="/main/book/all">
+            <v-list-tile-action>
+              <v-icon>book</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>Books</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
         <v-spacer></v-spacer>
         <v-list>
           <v-list-tile @click="logout">

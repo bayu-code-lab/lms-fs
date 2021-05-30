@@ -5,6 +5,7 @@ from sqlalchemy.orm import Session
 
 from app import crud, models, schemas
 from app.api import deps
+from datetime import datetime
 
 router = APIRouter()
 
@@ -58,8 +59,10 @@ def update_customer(
     customer = crud.customer.get(db=db, id=id)
     if not customer:
         raise HTTPException(status_code=404, detail="Customer not found")
-    if not crud.user.is_superuser(current_user) and (customer.owner_id != current_user.id):
+    if not crud.user.is_superuser(current_user): #and (customer.owner_id != current_user.id):
         raise HTTPException(status_code=400, detail="Not enough permissions")
+    customer.updated_by = current_user.id
+    customer.updated_date = str(datetime.utcnow())
     customer = crud.customer.update(db=db, db_obj=customer, obj_in=customer_in)
     return customer
 

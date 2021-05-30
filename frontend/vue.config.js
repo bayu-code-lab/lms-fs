@@ -16,6 +16,8 @@ module.exports = {
           },
         },
       );
+    }  else{
+      devtool: 'source-map'
     }
   },
   chainWebpack: config => {

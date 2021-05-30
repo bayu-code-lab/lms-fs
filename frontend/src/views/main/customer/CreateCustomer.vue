@@ -48,7 +48,7 @@ import {
 import { readOneCustomer } from '@/store/customer/getters';
 
 @Component
-export default class EditUser extends Vue {
+export default class EditCustomer extends Vue {
     public valid = true;
     public customerId: string = '';
     public fullName: string = '';

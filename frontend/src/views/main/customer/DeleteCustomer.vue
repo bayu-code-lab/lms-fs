@@ -2,7 +2,7 @@
     <v-container fluid>
         <v-card class="ma-3 pa-3">
             <v-card-title primary-title>
-                <div class="headline primary--text">Create Customer</div>
+                <div class="headline primary--text">Delete Customer</div>
             </v-card-title>
             <v-card-text>
                 <template>
@@ -46,7 +46,7 @@ import {
 import { readOneCustomer } from '@/store/customer/getters';
 
 @Component
-export default class EditUser extends Vue {
+export default class EditCustomer extends Vue {
     public valid = true;
     public customerId: string = '';
     public fullName: string = '';

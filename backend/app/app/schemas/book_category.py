@@ -5,24 +5,22 @@ from typing import Optional
 
 
 # Shared properties
-class CustomerBase(BaseModel):
-    customer_id: str
-    full_name: str
-    address: str
+class BookCategoryBase(BaseModel):
+    desc: str
 
 
-# Properties to receive on Customer creation
-class CustomerCreate(CustomerBase):
+# Properties to receive on BookCategory creation
+class BookCategoryCreate(BookCategoryBase):
     pass
 
 
-# Properties to receive on Customer update
-class CustomerUpdate(CustomerBase):
+# Properties to receive on BookCategory update
+class BookCategoryUpdate(BookCategoryBase):
     pass
 
 
 # Properties shared by models stored in DB
-class CustomerInDBBase(CustomerBase):
+class BookCategoryInDBBase(BookCategoryBase):
     id: int
     created_by: int
     created_date: datetime
@@ -33,10 +31,10 @@ class CustomerInDBBase(CustomerBase):
 
 
 # Properties to return to client
-class Customer(CustomerInDBBase):
+class BookCategory(BookCategoryInDBBase):
     pass
 
 
 # Properties properties stored in DB
-class CustomerInDB(CustomerInDBBase):
+class BookCategoryInDB(BookCategoryInDBBase):
     pass

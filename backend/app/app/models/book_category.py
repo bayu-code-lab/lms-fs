@@ -9,11 +9,9 @@ if TYPE_CHECKING:
     from .user import User  # noqa: F401
 
 
-class Customer(Base):
+class BookCategory(Base):
     id = Column(Integer, primary_key=True, index=True)
-    customer_id = Column(String, unique=True, index=True, nullable=False)
-    full_name = Column(String, index=True, nullable=False)
-    address = Column(String, index=True, nullable=False)
+    desc = Column(String, index=True, nullable=False)
     created_by = Column(Integer, ForeignKey("user.id"), nullable=False)
     created_date = Column(DateTime, default=datetime.utcnow(), nullable=False)
     updated_by = Column(Integer, ForeignKey("user.id"), nullable=True)
