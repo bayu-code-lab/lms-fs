@@ -98,3 +98,12 @@ export interface IBookTransactionCreate {
     total: number;
     day: number;
 }
+
+
+export interface IBookTransactionEdit {
+    id: number;
+    customer_id: number;
+    book_id: number;
+    total: number;
+    day: number;
+}
