@@ -52,7 +52,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Watch } from 'vue-property-decorator';
 import { IBookUpdate } from '@/interfaces';
 import {
     dispatchGetBook,
@@ -66,6 +66,7 @@ import { dispatchGetBookCategory } from '@/store/book_category/actions';
 export default class EditBook extends Vue {
     public valid = true;
     public selectedCategories = {};
+    public categoryId = 0
     public title: string = '';
     public desc: string = '';
     public author: string = '';
@@ -86,15 +87,21 @@ export default class EditBook extends Vue {
         if (this.book) {
             this.title = this.book.title;
             this.desc = this.book.desc;
-            this.author = this.book.desc;
+            this.author = this.book.author;
             this.quantity = Number(this.book.quantity);
             this.selectedCategories = this.categories.find((category) => category.id === this.book?.category_id) || {};
         }
     }
 
+    @Watch('selectedCategories')
+    handleCategory(value){
+        this.categoryId = value.id
+    }
+
     public cancel() {
         this.$router.back();
     }
+
 
     public async submit() {
         if (await this.$validator.validateAll()) {
@@ -106,10 +113,10 @@ export default class EditBook extends Vue {
                 updatedBook.desc = this.desc;
             }
             if (this.selectedCategories) {
-                updatedBook.category_id = Number(this.selectedCategories);
+                updatedBook.category_id = Number(this.categoryId);
             }
             if (this.author) {
-                updatedBook.author = this.desc;
+                updatedBook.author = this.author;
             }
             if (this.quantity) {
                 updatedBook.quantity = Number(this.quantity);

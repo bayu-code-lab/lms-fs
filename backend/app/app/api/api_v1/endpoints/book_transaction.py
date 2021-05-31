@@ -29,7 +29,7 @@ def read_book_transactions(
     return book_transactions
 
 
-@router.post("/", response_model=schemas.BookTransaction)
+@router.post("/")
 def create_book_transaction(
     *,
     db: Session = Depends(deps.get_db),
@@ -51,25 +51,31 @@ def create_book_transaction(
     return book_transaction
 
 
-@router.put("/{id}", response_model=schemas.BookTransaction)
+@router.put("-return/{id}")
 def update_book_transaction(
     *,
     db: Session = Depends(deps.get_db),
     id: int,
-    book_transaction_in: schemas.BookTransactionUpdate,
     current_user: models.User = Depends(deps.get_current_active_user),
 ) -> Any:
     """
     Update an book_transaction.
     """
     book_transaction = crud.book_transaction.get(db=db, id=id)
-    if not bookTransaction:
+    if not book_transaction:
         raise HTTPException(status_code=404, detail="BookTransaction  not found")
     if not crud.user.is_superuser(current_user):
         raise HTTPException(status_code=400, detail="Not enough permissions")
+    book_transaction.is_returned = True
+    book_transaction.date_returned = str(datetime.utcnow())
     book_transaction.updated_by = current_user.id
     book_transaction.updated_date = str(datetime.utcnow())
-    book_transaction = crud.book_transaction.update(db=db, db_obj=book_transaction, obj_in=book_transaction_in)
+    book_transaction = crud.book_transaction.update(db=db, db_obj=book_transaction, obj_in=book_transaction.__dict__)
+    book = crud.book.get(db=db, id=book_transaction.book_id)
+    book.quantity += book_transaction.total
+    book.updated_by = current_user.id
+    book.updated_date = str(datetime.utcnow())
+    crud.book.update(db=db, db_obj=book, obj_in=book.__dict__)
     return book_transaction
 
 

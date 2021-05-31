@@ -13,7 +13,9 @@ class BookTransactionBase(BaseModel):
     total: int
     day: int
     is_returned: bool
-    date_returned: Optional[datetime]
+    is_late: Optional[bool]
+    date_returned: Optional[str]
+    created_date: Optional[str]
 
 
 # Properties to receive on BookTransaction creation

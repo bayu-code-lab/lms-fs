@@ -28,6 +28,15 @@ def read_customers(
         )
     return customers
 
+@router.get("-search")
+def search_customer(
+    db: Session = Depends(deps.get_db),
+    current_user: models.User = Depends(deps.get_current_active_user)
+) -> Any:
+    customers = crud.customer.customer_search(
+        db=db, owner_id=current_user.id
+    )
+    return customers
 
 @router.post("/", response_model=schemas.Customer)
 def create_customer(
