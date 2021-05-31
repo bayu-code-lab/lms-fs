@@ -92,7 +92,7 @@
         <v-divider></v-divider>
         <v-list subheader>
           <v-subheader>Transaction</v-subheader>
-          <v-list-tile v-show="hasAdminAccess" to="#">
+          <v-list-tile v-show="hasAdminAccess" to="/main/borrow/index">
             <v-list-tile-action>
               <v-icon>file_upload</v-icon>
             </v-list-tile-action>
@@ -100,7 +100,7 @@
               <v-list-tile-title>Borrowing</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
-          <v-list-tile to="#">
+          <v-list-tile to="/main/returned/all">
             <v-list-tile-action>
               <v-icon>file_download</v-icon>
             </v-list-tile-action>

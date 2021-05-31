@@ -13,6 +13,8 @@ import {
     IBook,
     IBookCreate,
     IBookUpdate,
+    IBookTransactionCreate,
+    IBookTransaction,
 } from './interfaces';
 
 function authHeaders(token: string) {
@@ -156,6 +158,31 @@ export const api = {
     async deleteBooks(token: string, id: number) {
         return axios.delete(
             `${apiUrl}/api/v1/books/${id}`,
+            authHeaders(token),
+        );
+    },
+
+
+    //Books Transaction
+    async getBookTransactions(token: string) {
+        return axios.get<IBookTransaction[]>(
+            `${apiUrl}/api/v1/book-transactions/`,
+            authHeaders(token),
+        );
+    },
+    async borrowBooks(token: string, data: IBookTransactionCreate) {
+        return axios.post(
+            `${apiUrl}/api/v1/book-transactions/`,
+            data,
+            authHeaders(token),
+        );
+    },
+    async returningBooks(
+        token: string,
+        id: number
+    ) {
+        return axios.put(
+            `${apiUrl}/api/v1/book-transactions-return/${id}`,
             authHeaders(token),
         );
     },
