@@ -8,7 +8,7 @@ default_context:
   secret_key: '4af06dfff0aa6f839865b78d3a5107b30c80fab31b217650eb1fb79e593a85a5'
   first_superuser: 'admin@lms-fs.com'
   first_superuser_password: 'Admin321!'
-  backend_cors_origins: '["http://localhost", "http://localhost:4200", "http://localhost:3000", "http://localhost:8080", "https://localhost", "https://localhost:4200", "https://localhost:3000", "https://localhost:8080", "http://dev.lms-fs.com", "https://stag.lms-fs.com", "https://lms-fs.com", "http://local.dockertoolbox.tiangolo.com", "http://localhost.tiangolo.com"]'
+  backend_cors_origins: '["http://18.138.249.135", "http://library.sman4pariaman.com", "https://library.sman4pariaman.com", "http://localhost", "http://localhost:4200", "http://localhost:3000", "http://localhost:8080", "https://localhost", "https://localhost:4200", "https://localhost:3000", "https://localhost:8080", "http://dev.lms-fs.com", "https://stag.lms-fs.com", "https://lms-fs.com", "http://local.dockertoolbox.tiangolo.com", "http://localhost.tiangolo.com"]'
   smtp_port: '587'
   smtp_host: ''
   smtp_user: ''
