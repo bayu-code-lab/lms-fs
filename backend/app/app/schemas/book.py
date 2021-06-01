@@ -15,7 +15,13 @@ class BookBase(BaseModel):
 
 
 # Properties to receive on Book creation
-class BookCreate(BookBase):
+class BookCreate(BaseModel):
+    title: str
+    desc: str
+    category_id: int
+    author: str
+    quantity: int
+    
     pass
 
 
@@ -34,7 +40,6 @@ class BookInDBBase(BookBase):
 # Properties to return to client
 class Book(BookInDBBase):
     pass
-
 
 # Properties properties stored in DB
 class BookInDB(BookInDBBase):

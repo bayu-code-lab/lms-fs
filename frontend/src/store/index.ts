@@ -7,6 +7,7 @@ import { adminModule } from './admin';
 import { customerModule } from './customer';
 import { BookCategoryModule } from './book_category';
 import { BookModule } from './book';
+import { BookTransactionModule } from './book_transaction';
 
 Vue.use(Vuex);
 
@@ -17,6 +18,7 @@ const storeOptions: StoreOptions<State> = {
     customer: customerModule,
     book_category: BookCategoryModule,
     book: BookModule,
+    book_transaction: BookTransactionModule,
   },
 };
 

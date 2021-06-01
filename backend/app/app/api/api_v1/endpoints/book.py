@@ -28,6 +28,16 @@ def read_books(
     )
     return books
 
+@router.get("-search")
+def search_book(
+    db: Session = Depends(deps.get_db),
+    book_title: str = '',
+    current_user: models.User = Depends(deps.get_current_active_user)
+) -> Any:
+    books = crud.book.book_search(
+        db=db, owner_id=current_user.id, book_title=book_title
+    )
+    return books
 
 @router.post("/", response_model=schemas.Book)
 def create_book(

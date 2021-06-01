@@ -102,7 +102,7 @@ export default class EditBook extends Vue {
                 updatedBook.category_id = Number(this.categoryId);
             }
             if (this.author) {
-                updatedBook.author = this.desc;
+                updatedBook.author = this.author;
             }
             if (this.quantity) {
                 updatedBook.quantity = Number(this.quantity);

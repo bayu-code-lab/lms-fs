@@ -32,6 +32,21 @@ class CRUDCustomer(CRUDBase[Customer, CustomerCreate, CustomerUpdate]):
         
     def get_by_customer_id(self, db: Session, *, customer_id: str):
         return db.query(Customer).filter(Customer.customer_id == customer_id).first() is not None
+    
+    def customer_search(
+        self, db: Session, *, owner_id: int
+    ) -> List[Customer]:
+        result = dict()
+        entries = list()
+        for a in db.query(self.model).all():
+            entries.append({
+                'id': a.id,
+                'desc': '{} ({})'.format(a.full_name, a.customer_id),
+            })
+            result['count'] = len(entries)
+            result['entries'] = entries
+        
+        return result
 
 
 customer = CRUDCustomer(Customer)

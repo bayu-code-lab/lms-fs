@@ -149,6 +149,30 @@ export default new Router({
               ],
             },
             {
+              path: 'borrow',
+              component: RouterComponent,
+              redirect: 'borrow/index',
+              children: [
+                {
+                  path: 'index',
+                  component: () => import(
+                    /* webpackChunkName: "main-book" */ './views/main/borrow/Borrows.vue'),
+                },
+              ],
+            },
+            {
+              path: 'returned',
+              component: RouterComponent,
+              redirect: 'returned/all',
+              children: [
+                {
+                  path: 'all',
+                  component: () => import(
+                    /* webpackChunkName: "main-book" */ './views/main/returned/Returning.vue'),
+                },
+              ],
+            },
+            {
               path: 'admin',
               component: () => import(/* webpackChunkName: "main-admin" */ './views/main/admin/Admin.vue'),
               redirect: 'admin/users/all',

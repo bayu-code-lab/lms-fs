@@ -89,21 +89,36 @@ export interface IBookTransaction {
     total: number;
     day: number;
     is_returned: boolean;
+    is_late: boolean;
     date_returned: string;
-}
-export interface IBookTransactionCreate {
-    id: number;
-    customer_id: number;
-    book_id: number;
-    total: number;
-    day: number;
+    created_date: string;
 }
 
+export interface IBookTransactionData {
+    id: number;
+    customer_id: number;
+    customer_name: string;
+    book_id: number;
+    book_title: string;
+    total: number;
+    day: number;
+    is_returned: boolean;
+    is_late: boolean;
+    date_returned: string;
+    created_date: string;
+}
 
 export interface IBookTransactionEdit {
-    id: number;
-    customer_id: number;
-    book_id: number;
-    total: number;
-    day: number;
+    id?: number;
+    customer_id?: number;
+    book_id?: number;
+    total?: number;
+    day?: number;
+}
+
+export interface IBookTransactionCreate {
+    customer_id?: number;
+    book_id?: number;
+    total?: number;
+    day?: number;
 }

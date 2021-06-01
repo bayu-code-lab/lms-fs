@@ -9,7 +9,6 @@
     </v-toolbar>
     <v-data-table :headers="headers" :items="users">
       <template slot="items" slot-scope="props">
-        <td>{{ props.item.name }}</td>
         <td>{{ props.item.email }}</td>
         <td>{{ props.item.full_name }}</td>
         <td><v-icon v-if="props.item.is_active">checkmark</v-icon></td>
@@ -37,12 +36,6 @@ import { dispatchGetUsers } from '@/store/admin/actions';
 @Component
 export default class AdminUsers extends Vue {
   public headers = [
-    {
-      text: 'Name',
-      sortable: true,
-      value: 'name',
-      align: 'left',
-    },
     {
       text: 'Email',
       sortable: true,
