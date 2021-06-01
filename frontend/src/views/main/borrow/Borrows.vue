@@ -17,7 +17,7 @@
                                 required
                             ></v-text-field>
                             <v-text-field
-                                label="Today Day"
+                                label="Total Day"
                                 v-model="day"
                                 type="day"
                                 required
