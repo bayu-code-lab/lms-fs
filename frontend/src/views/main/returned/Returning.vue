@@ -1,19 +1,19 @@
 <template>
     <div>
         <v-alert v-model="alert" type="success">
-            Book has been returned.
+            Buku berhasil dikembalikan.
         </v-alert>
 
         <v-card>
             <v-card-title>
                 <v-toolbar-title>
-                    Book Transactions
+                    Pengembalian Buku
                 </v-toolbar-title>
                 <v-spacer></v-spacer>
                 <v-text-field
                     v-model="search"
                     append-icon="search"
-                    label="Search"
+                    label="Pencarian"
                     single-line
                     hide-details
                 ></v-text-field>
@@ -28,6 +28,8 @@
                 <template slot="items" slot-scope="props">
                     <td>{{ props.item.customer_name }}</td>
                     <td>{{ props.item.book_title }}</td>
+                    <td>{{ props.item.year }}</td>
+                    <td>{{ props.item.publisher }}</td>
                     <td style="text-align:center">{{ props.item.total }}</td>
                     <td style="text-align:center">{{ props.item.day }}</td>
                     <td style="text-align:center">
@@ -43,7 +45,7 @@
                             class="primary"
                             @click="submitData(props.item.id)"
                         >
-                            <span>Return</span>
+                            <span>Kembalikan Buku</span>
                             <v-icon left>assignment_returned</v-icon>
                         </v-btn>
                     </td>
@@ -71,40 +73,52 @@ export default class Books extends Vue {
     public search: string = '';
     public headers = [
         {
-            text: 'Customer Name',
+            text: 'Nama Peminjam',
             sortable: true,
             value: 'customer_name',
             align: 'left',
         },
         {
-            text: 'Book Title',
+            text: 'Judul Buku',
             sortable: true,
             value: 'book_title',
             align: 'left',
         },
         {
-            text: 'Total Books',
+            text: 'Tahun',
+            sortable: true,
+            value: 'year',
+            align: 'left',
+        },
+        {
+            text: 'Penerbit',
+            sortable: true,
+            value: 'publisher',
+            align: 'left',
+        },
+        {
+            text: 'Jumlah Buku',
             sortable: true,
             filterable: false,
             value: 'total',
             align: 'center',
         },
         {
-            text: 'Total Day',
+            text: 'Lama Dipinjam',
             sortable: true,
             filterable: false,
             value: 'day',
             align: 'center',
         },
         {
-            text: 'Late',
+            text: 'Terlambat',
             sortable: true,
             filterable: false,
             value: 'is_late',
             align: 'center',
         },
         {
-            text: 'Borrow Date',
+            text: 'Tanggal Peminjaman',
             sortable: true,
             filterable: false,
             value: 'created_date',

@@ -10,6 +10,8 @@ class BookTransactionBase(BaseModel):
     customer_name: Optional[str]
     book_id: int
     book_title: Optional[str]
+    year: Optional[int]
+    publisher: Optional[str]
     total: int
     day: int
     is_returned: bool

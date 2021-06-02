@@ -7,19 +7,23 @@ from typing import Optional
 # Shared properties
 class BookBase(BaseModel):
     title: str
-    desc: str
+    year: Optional[int]
     category_id: int
     category_desc: Optional[str]
+    publisher: Optional[str]
     author: str
+    isbn: Optional[str]
     quantity: int
 
 
 # Properties to receive on Book creation
 class BookCreate(BaseModel):
     title: str
-    desc: str
+    year: int
     category_id: int
+    publisher: str
     author: str
+    isbn: Optional[str]
     quantity: int
     
     pass

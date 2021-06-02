@@ -35,6 +35,8 @@ class CRUDBookTransaction(CRUDBase[BookTransaction, BookTransactionCreate, BookT
                 'customer_name': b.full_name,
                 'book_id': a.book_id,
                 'book_title': None,
+                'year': None,
+                'publisher': None,
                 'total': a.total,
                 'day': a.day,
                 'is_returned': a.is_returned,
@@ -44,7 +46,10 @@ class CRUDBookTransaction(CRUDBase[BookTransaction, BookTransactionCreate, BookT
             })
             
         for _ in result:
-            _['book_title'] = db.query(Book).filter(Book.id == _['book_id']).first().title
+            data = db.query(Book).filter(Book.id == _['book_id']).first()
+            _['book_title'] = data.title
+            _['year'] =  data.year
+            _['publisher'] = data.publisher
         return result
 
 

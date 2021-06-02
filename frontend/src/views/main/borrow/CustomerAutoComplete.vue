@@ -9,8 +9,8 @@
                 hide-selected
                 item-text="desc"
                 item-value="id"
-                label="Customer"
-                placeholder="Start typing to Search"
+                label="Peminjam"
+                placeholder="Pencarian Nama"
                 append-icon="search"
                 required
                 return-object

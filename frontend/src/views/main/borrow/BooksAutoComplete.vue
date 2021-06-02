@@ -9,8 +9,8 @@
                 hide-selected
                 item-text="title"
                 item-value="id"
-                label="Book"
-                placeholder="Start typing to Search"
+                label="Buku"
+                placeholder="Pencarian Buku"
                 append-icon="search"
                 required
                 return-object

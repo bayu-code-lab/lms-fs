@@ -77,15 +77,15 @@
               <v-icon>category</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title>Book Category</v-list-tile-title>
+              <v-list-tile-title>Kategori Buku</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
           <v-list-tile to="/main/book/all">
             <v-list-tile-action>
-              <v-icon>book</v-icon>
+              <v-icon>booku</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title>Books</v-list-tile-title>
+              <v-list-tile-title>Daftar Buku</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
@@ -97,7 +97,7 @@
               <v-icon>file_upload</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title>Borrowing</v-list-tile-title>
+              <v-list-tile-title>Peminjaman</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
           <v-list-tile  to="/main/returned/all">
@@ -105,7 +105,7 @@
               <v-icon>file_download</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
-              <v-list-tile-title>Returning</v-list-tile-title>
+              <v-list-tile-title>Pengembalian</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>

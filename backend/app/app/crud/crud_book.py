@@ -29,10 +29,12 @@ class CRUDBook(CRUDBase[Book, BookCreate, BookUpdate]):
             result.append({
                 'id': a.id,
                 'title': a.title,
-                'desc': a.desc,
+                'year': a.year,
                 'category_id': a.category_id,
                 'category_desc': b.desc,
+                'publisher': a.publisher,
                 'author': a.author,
+                'isbn': a.isbn,
                 'quantity': a.quantity
             })
         return result
@@ -46,11 +48,13 @@ class CRUDBook(CRUDBase[Book, BookCreate, BookUpdate]):
             for a, b in db.query(self.model, BookCategory).filter(self.model.category_id == BookCategory.id).all():
                 entries.append({
                     'id': a.id,
-                    'title': a.title,
-                    'desc': a.desc,
+                    'title': '{} {}'.format(a.title, a.year) if a.isbn is None else '{} {} ISBN: {}'.format(a.title, a.year, a.isbn),
+                    'year': a.year,
                     'category_id': a.category_id,
                     'category_desc': b.desc,
+                    'publisher': a.publisher,
                     'author': a.author,
+                    'isbn': a.isbn,
                     'quantity': a.quantity
                 })
                 result['count'] = len(entries)
@@ -59,11 +63,13 @@ class CRUDBook(CRUDBase[Book, BookCreate, BookUpdate]):
             for a, b in db.query(self.model, BookCategory).filter(self.model.category_id == BookCategory.id, func.lower(self.model.title).like('%{}%'.format(book_title.lower()))).limit(20).all():
                 entries.append({
                     'id': a.id,
-                    'title': a.title,
-                    'desc': a.desc,
+                    'title': '{} {}'.format(a.title, a.year) if a.isbn is None else '{} {} ISBN: {}'.format(a.title, a.year, a.isbn),
+                    'year': a.year,
                     'category_id': a.category_id,
                     'category_desc': b.desc,
+                    'publisher': a.publisher,
                     'author': a.author,
+                    'isbn': a.isbn,
                     'quantity': a.quantity
                 })
                 result['count'] = len(entries)
