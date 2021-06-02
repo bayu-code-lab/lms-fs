@@ -8,30 +8,40 @@
                 <template>
                     <v-form v-model="valid" ref="form" lazy-validation>
                         <v-text-field
-                            label="Title"
+                            label="Judul Buku"
                             v-model="title"
                             required
                         ></v-text-field>
                         <v-text-field
-                            label="Description"
-                            v-model="desc"
+                            label="Tahun"
+                            v-model="year"
+                            type="number"
                             required
                         ></v-text-field>
                         <v-select
                             :items="categories"
-                            label="Category"
+                            label="Kategori"
                             item-text="desc"
+                            v-model="categoryId"
                             item-value="id"
-                            v-model="selectedCategories"
                             required
                         ></v-select>
                         <v-text-field
-                            label="Author"
+                            label="Penerbit"
+                            v-model="publisher"
+                            required
+                        ></v-text-field>
+                        <v-text-field
+                            label="Pengarang"
                             v-model="author"
                             required
                         ></v-text-field>
                         <v-text-field
-                            label="Quantity"
+                            label="Kode ISBN"
+                            v-model="isbn"
+                        ></v-text-field>
+                        <v-text-field
+                            label="Jumlah Buku"
                             v-model="quantity"
                             type="number"
                             required
@@ -68,8 +78,10 @@ export default class EditBook extends Vue {
     public selectedCategories = {};
     public categoryId = 0
     public title: string = '';
-    public desc: string = '';
+    public year: number = 0;
+    public publisher: string = '';
     public author: string = '';
+    public isbn: string = '';
     public quantity: number = 0;
 
     public async mounted() {
@@ -86,8 +98,10 @@ export default class EditBook extends Vue {
         this.$validator.reset();
         if (this.book) {
             this.title = this.book.title;
-            this.desc = this.book.desc;
+            this.year = this.book.year;
             this.author = this.book.author;
+            this.publisher = this.book.publisher;
+            this.isbn = this.book.isbn;
             this.quantity = Number(this.book.quantity);
             this.selectedCategories = this.categories.find((category) => category.id === this.book?.category_id) || {};
         }
@@ -109,11 +123,17 @@ export default class EditBook extends Vue {
             if (this.title) {
                 updatedBook.title = this.title;
             }
-            if (this.desc) {
-                updatedBook.desc = this.desc;
+            if (this.year) {
+                updatedBook.year = this.year;
             }
             if (this.selectedCategories) {
                 updatedBook.category_id = Number(this.categoryId);
+            }
+            if (this.publisher) {
+                updatedBook.publisher = this.publisher;
+            }
+            if (this.isbn) {
+                updatedBook.isbn = this.isbn;
             }
             if (this.author) {
                 updatedBook.author = this.author;

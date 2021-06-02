@@ -8,30 +8,40 @@
                 <template>
                     <v-form v-model="valid" ref="form" lazy-validation>
                         <v-text-field
-                            label="Title"
+                            label="Judul Buku"
                             v-model="title"
                             required
                         ></v-text-field>
                         <v-text-field
-                            label="Description"
-                            v-model="desc"
+                            label="Tahun"
+                            v-model="year"
+                            type="number"
                             required
                         ></v-text-field>
                         <v-select
                             :items="categories"
-                            label="Category"
+                            label="Kategori"
                             item-text="desc"
                             v-model="categoryId"
                             item-value="id"
                             required
                         ></v-select>
                         <v-text-field
-                            label="Author"
+                            label="Penerbit"
+                            v-model="publisher"
+                            required
+                        ></v-text-field>
+                        <v-text-field
+                            label="Pengarang"
                             v-model="author"
                             required
                         ></v-text-field>
                         <v-text-field
-                            label="Quantity"
+                            label="Kode ISBN"
+                            v-model="isbn"
+                        ></v-text-field>
+                        <v-text-field
+                            label="Jumlah Buku"
                             v-model="quantity"
                             type="number"
                             required
@@ -62,9 +72,11 @@ import { dispatchGetBookCategory } from '@/store/book_category/actions';
 export default class EditBook extends Vue {
     public valid = true;
     public title: string = '';
-    public desc: string = '';
+    public year: number = 0;
     public categoryId = '';
+    public publisher: string = '';
     public author: string = '';
+    public isbn: string = '';
     public quantity: number = 0;
 
     public async mounted() {
@@ -75,9 +87,11 @@ export default class EditBook extends Vue {
 
     public reset() {
         this.title = '';
-        this.desc = '';
+        this.year = 0;
         this.categoryId = '';
+        this.publisher = '';
         this.author = '';
+        this.isbn = '';
         this.quantity = 0;
     }
 
@@ -95,14 +109,20 @@ export default class EditBook extends Vue {
             if (this.title) {
                 updatedBook.title = this.title;
             }
-            if (this.desc) {
-                updatedBook.desc = this.desc;
+            if (this.year) {
+                updatedBook.year = this.year;
             }
             if (this.categoryId) {
                 updatedBook.category_id = Number(this.categoryId);
             }
+            if (this.publisher) {
+                updatedBook.publisher = this.publisher;
+            }
             if (this.author) {
                 updatedBook.author = this.author;
+            }
+            if (this.isbn) {
+                updatedBook.isbn = this.isbn;
             }
             if (this.quantity) {
                 updatedBook.quantity = Number(this.quantity);

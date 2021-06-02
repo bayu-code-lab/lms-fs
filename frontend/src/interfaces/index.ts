@@ -57,26 +57,32 @@ export interface IBookCategoryCreate {
 export interface IBook {
     id: number;
     title: string;
-    desc: string;
+    year: number;
     category_id: number;
     category_desc: string;
+    publisher: string
     author: string;
+    isbn: string
     quantity: number;
 }
 
 export interface IBookUpdate {
     title?: string;
-    desc?: string;
+    year?: number;
     category_id?: number;
+    publisher?: string
     author?: string;
+    isbn?: string
     quantity?: number;
 }
 
 export interface IBookCreate {
     title?: string;
-    desc?: string;
+    year?: number;
     category_id?: number;
+    publisher?: string
     author?: string;
+    isbn?: string
     quantity?: number;
 }
 

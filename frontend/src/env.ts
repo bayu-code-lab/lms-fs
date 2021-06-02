@@ -8,6 +8,7 @@ if (env === 'production') {
   envApiUrl = `https://${process.env.VUE_APP_DOMAIN_STAG}`;
 } else {
   envApiUrl = `http://library.sman4pariaman.com`;
+  // envApiUrl = `http://${process.env.VUE_APP_DOMAIN_DEV}`;
 }
 
 export const apiUrl = envApiUrl;

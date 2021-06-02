@@ -15,9 +15,11 @@
         <v-data-table :headers="headers" :items="books">
             <template slot="items" slot-scope="props">
                 <td>{{ props.item.title }}</td>
-                <td>{{ props.item.desc }}</td>
+                <td>{{ props.item.year }}</td>
                 <td>{{ props.item.category_desc }}</td>
+                <td>{{ props.item.publisher }}</td>
                 <td>{{ props.item.author }}</td>
+                <td>{{ props.item.isbn }}</td>
                 <td>{{ props.item.quantity }}</td>
                 <td class="justify-center layout px-0">
                     <v-tooltip v-show="hasAdminAccess" top>
@@ -64,31 +66,43 @@ import { readHasAdminAccess } from '@/store/main/getters';
 export default class Books extends Vue {
     public headers = [
         {
-            text: 'Title',
+            text: 'Judul Buku',
             sortable: true,
             value: 'title',
             align: 'left',
         },
         {
-            text: 'Description',
+            text: 'Tahun',
             sortable: true,
-            value: 'desc',
+            value: 'year',
             align: 'left',
         },
         {
-            text: 'Category',
+            text: 'Kategori',
             sortable: true,
             value: 'category_id',
             align: 'left',
         },
         {
-            text: ' Author',
+            text: 'Penerbit',
             sortable: true,
             value: 'author',
             align: 'left',
         },
         {
-            text: ' quantity',
+            text: ' Pengarang',
+            sortable: true,
+            value: 'author',
+            align: 'left',
+        },
+        {
+            text: 'Kode ISBN',
+            sortable: true,
+            value: 'author',
+            align: 'left',
+        },
+        {
+            text: 'Jumlah',
             sortable: true,
             value: 'quantity',
             align: 'left',
