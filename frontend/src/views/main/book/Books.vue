@@ -2,14 +2,14 @@
     <div>
         <v-toolbar light>
             <v-toolbar-title>
-                Books
+                Daftar Buku
             </v-toolbar-title>
             <v-spacer></v-spacer>
             <v-btn
                 v-show="hasAdminAccess"
                 color="primary"
                 to="/main/book/create"
-                >Create Book
+                >Tambah Buku
             </v-btn>
         </v-toolbar>
         <v-data-table :headers="headers" :items="books">
@@ -23,7 +23,7 @@
                 <td>{{ props.item.quantity }}</td>
                 <td class="justify-center layout px-0">
                     <v-tooltip v-show="hasAdminAccess" top>
-                        <span>Edit</span>
+                        <span>Ubah</span>
                         <v-btn
                             slot="activator"
                             flat
@@ -36,7 +36,7 @@
                         </v-btn>
                     </v-tooltip>
                     <v-tooltip v-show="hasAdminAccess" top>
-                        <span>Delete</span>
+                        <span>Hapus</span>
                         <v-btn
                             slot="activator"
                             flat

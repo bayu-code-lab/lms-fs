@@ -92,6 +92,8 @@ export interface IBookTransaction {
     customer_name: string;
     book_id: number;
     book_title: string;
+    year: number;
+    publisher: string;
     total: number;
     day: number;
     is_returned: boolean;

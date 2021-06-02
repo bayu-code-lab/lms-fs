@@ -2,7 +2,7 @@
     <v-container fluid>
         <v-card class="ma-3 pa-3">
             <v-card-title primary-title>
-                <div class="headline primary--text">Create Book</div>
+                <div class="headline primary--text">Tambah Buku</div>
             </v-card-title>
             <v-card-text>
                 <template>

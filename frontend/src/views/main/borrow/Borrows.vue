@@ -2,7 +2,7 @@
     <v-container fluid>
         <v-card class="ma-3 pa-3">
             <v-card-title primary-title>
-                <div class="headline primary--text">Borrow Books</div>
+                <div class="headline primary--text">Peminjaman Buku</div>
             </v-card-title>
             <v-card-text>
                 <template>
@@ -11,13 +11,13 @@
                             <customer-auto-complete @customer-id-data="setCustomerId"></customer-auto-complete>
                             <books-auto-complete @book-id-data="setBookId"></books-auto-complete>
                             <v-text-field
-                                label="Total Books"
+                                label="Jumlah Buku"
                                 v-model="total"
                                 type="number"
                                 required
                             ></v-text-field>
                             <v-text-field
-                                label="Total Day"
+                                label="Jumlah Hari"
                                 v-model="day"
                                 type="day"
                                 required
