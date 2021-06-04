@@ -30,8 +30,8 @@ class CRUDCustomer(CRUDBase[Customer, CustomerCreate, CustomerUpdate]):
             .all()
         )
         
-    def get_by_customer_id(self, db: Session, *, customer_id: str):
-        return db.query(Customer).filter(Customer.customer_id == customer_id).first() is not None
+    def get_by_customer_id(self, db: Session, *, id: str):
+        return db.query(Customer).filter(Customer.id == id).first() is not None
     
     def customer_search(
         self, db: Session, *, owner_id: int
@@ -41,7 +41,7 @@ class CRUDCustomer(CRUDBase[Customer, CustomerCreate, CustomerUpdate]):
         for a in db.query(self.model).all():
             entries.append({
                 'id': a.id,
-                'desc': '{} ({})'.format(a.full_name, a.customer_id),
+                'desc': '{} ({})'.format(a.full_name, a.id),
             })
             result['count'] = len(entries)
             result['entries'] = entries

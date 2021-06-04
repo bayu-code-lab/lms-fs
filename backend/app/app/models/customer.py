@@ -10,9 +10,11 @@ if TYPE_CHECKING:
 
 
 class Customer(Base):
-    id = Column(Integer, primary_key=True, index=True)
-    customer_id = Column(String, unique=True, index=True, nullable=False)
+    id = Column(String, primary_key=True, index=True, nullable=False)
     full_name = Column(String, index=True, nullable=False)
+    grade = Column(Integer, index=True, nullable=True)
+    major = Column(String, index=True, nullable=True)
+    batch_of_year = Column(Integer, index=True, nullable=True)
     address = Column(String, index=True, nullable=False)
     created_by = Column(Integer, ForeignKey("user.id"), nullable=False)
     created_date = Column(DateTime, default=datetime.utcnow(), nullable=False)

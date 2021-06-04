@@ -5,7 +5,7 @@ import { State } from '../state';
 export const getters = {
     Customers: (state: CustomerState) => state.customers,
     OneCustomer: (state: CustomerState) => (id: number) => {
-        const filteredCustomers = state.customers.filter((customer) => customer.id === id);
+        const filteredCustomers = state.customers.filter((customer) => customer.id === String(id));
         if (filteredCustomers.length > 0) {
             return { ...filteredCustomers[0] };
         }

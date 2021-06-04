@@ -48,7 +48,7 @@ def create_customer(
     """
     Create new customer.
     """
-    if crud.customer.get_by_customer_id(db, customer_id=customer_in.customer_id):
+    if crud.customer.get_by_customer_id(db, id=customer_in.id):
         raise HTTPException(status_code=400, detail="ID already exist")
     customer = crud.customer.create_with_owner(db=db, obj_in=customer_in, owner_id=current_user.id)
     return customer
@@ -58,7 +58,7 @@ def create_customer(
 def update_customer(
     *,
     db: Session = Depends(deps.get_db),
-    id: int,
+    id: str,
     customer_in: schemas.CustomerUpdate,
     current_user: models.User = Depends(deps.get_current_active_user),
 ) -> Any:
@@ -80,7 +80,7 @@ def update_customer(
 def read_customer(
     *,
     db: Session = Depends(deps.get_db),
-    id: int,
+    id: str,
     current_user: models.User = Depends(deps.get_current_active_user),
 ) -> Any:
     """
@@ -98,7 +98,7 @@ def read_customer(
 def delete_customer(
     *,
     db: Session = Depends(deps.get_db),
-    id: int,
+    id: str,
     current_user: models.User = Depends(deps.get_current_active_user),
 ) -> Any:
     """

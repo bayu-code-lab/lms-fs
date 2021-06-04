@@ -78,7 +78,7 @@ export const api = {
             authHeaders(token),
         );
     },
-    async updateCustomer(token: string, id: number, data: ICustomerUpdate) {
+    async updateCustomer(token: string, id: string, data: ICustomerUpdate) {
         return axios.put(
             `${apiUrl}/api/v1/customers/${id}`,
             data,
@@ -92,7 +92,7 @@ export const api = {
             authHeaders(token),
         );
     },
-    async deleteCustomer(token: string, id: number) {
+    async deleteCustomer(token: string, id: string) {
         return axios.delete(
             `${apiUrl}/api/v1/customers/${id}`,
             authHeaders(token),

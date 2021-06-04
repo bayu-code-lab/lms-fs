@@ -23,21 +23,29 @@ export interface IUserProfileCreate {
 }
 
 export interface ICustomer {
-    id: number;
-    customer_id: string;
+    id: string;
     full_name: string;
+    grade: number;
+    major: string;
+    batch_of_year: number;
     address: string;
 }
 
 export interface ICustomerUpdate {
-    customer_id?: string;
+    id?: string;
     full_name?: string;
+    grade?: number;
+    major?: string;
+    batch_of_year?: number;
     address?: string;
 }
 
 export interface ICustomerCreate {
-    customer_id?: string;
+    id?: string;
     full_name?: string;
+    grade?: number;
+    major?: string;
+    batch_of_year?: number;
     address?: string;
 }
 

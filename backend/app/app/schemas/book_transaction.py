@@ -6,7 +6,7 @@ from typing import Optional
 
 # Shared properties
 class BookTransactionBase(BaseModel):
-    customer_id: int
+    customer_id: str
     customer_name: Optional[str]
     book_id: int
     book_title: Optional[str]
@@ -22,7 +22,7 @@ class BookTransactionBase(BaseModel):
 
 # Properties to receive on BookTransaction creation
 class BookTransactionCreate(BaseModel):
-    customer_id: int
+    customer_id: str
     book_id: int
     total: int
     day: int

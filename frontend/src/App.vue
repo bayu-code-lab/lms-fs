@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :style="{'background-image':'url(https://vuejs.org/images/logo.png)'}">
     <v-app>
       <v-content v-if="loggedIn===null">
         <v-container fill-height>

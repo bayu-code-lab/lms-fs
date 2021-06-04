@@ -21,7 +21,7 @@ export const actions = {
             await dispatchCheckApiError(context, error);
         }
     },
-    async actionUpdateCustomer(context: MainContext, payload: { id: number, customer: ICustomerUpdate }) {
+    async actionUpdateCustomer(context: MainContext, payload: { id: string, customer: ICustomerUpdate }) {
         try {
             const loadingNotification = { content: 'saving', showProgress: true };
             commitAddNotification(context, loadingNotification);
@@ -51,7 +51,7 @@ export const actions = {
             await dispatchCheckApiError(context, error);
         }
     },
-    async actionDeleteCustomer(context: MainContext, payload: { id: number}) {
+    async actionDeleteCustomer(context: MainContext, payload: { id: string}) {
         try {
             const loadingNotification = { content: 'saving', showProgress: true };
             commitAddNotification(context, loadingNotification);

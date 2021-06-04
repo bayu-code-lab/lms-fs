@@ -6,8 +6,11 @@ from typing import Optional
 
 # Shared properties
 class CustomerBase(BaseModel):
-    customer_id: str
+    id: str
     full_name: str
+    grade: Optional[int]
+    major:Optional[str]
+    batch_of_year: Optional[int]
     address: str
 
 
@@ -18,12 +21,16 @@ class CustomerCreate(CustomerBase):
 
 # Properties to receive on Customer update
 class CustomerUpdate(CustomerBase):
-    pass
+    id: Optional[str]
+    full_name: str
+    grade: Optional[int]
+    major:Optional[str]
+    batch_of_year: Optional[int]
+    address: str
 
 
 # Properties shared by models stored in DB
 class CustomerInDBBase(CustomerBase):
-    id: int
     created_by: int
     created_date: datetime
     updated_by: Optional[int]

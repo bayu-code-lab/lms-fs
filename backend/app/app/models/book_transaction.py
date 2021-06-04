@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 
 class BookTransaction(Base):
     id = Column(Integer, primary_key=True, index=True)
-    customer_id = Column(Integer, ForeignKey("customer.id"), nullable=False)
+    customer_id = Column(String, ForeignKey("customer.id"), nullable=False)
     book_id = Column(Integer, ForeignKey("book.id"), nullable=False)
     total = Column(Integer, index=True, nullable=False)
     day = Column(Integer, index=True, nullable=False)
