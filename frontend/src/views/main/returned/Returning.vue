@@ -6,9 +6,9 @@
 
         <v-card>
             <v-card-title>
-                <v-toolbar-title>
+                <v-app-bar-title>
                     Pengembalian Buku
-                </v-toolbar-title>
+                </v-app-bar-title>
                 <v-spacer></v-spacer>
                 <v-text-field
                     v-model="search"

@@ -10,10 +10,10 @@
                 <v-layout align-center justify-center>
                     <v-flex xs12 sm8 md3 :style="{ opacity: '0.6' }">
                         <v-card class="elevation-12">
-                            <v-toolbar dark color="primary">
-                                <v-toolbar-title>Login</v-toolbar-title>
+                            <v-app-bar dark color="primary">
+                                <v-app-bar-title>Login</v-app-bar-title>
                                 <v-spacer></v-spacer>
-                            </v-toolbar>
+                            </v-app-bar>
                             <v-card-text>
                                 <v-form @keyup.enter="submit">
                                     <v-text-field

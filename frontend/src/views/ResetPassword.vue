@@ -4,9 +4,9 @@
       <v-layout align-center justify-center>
         <v-flex xs12 sm8 md4>
           <v-card class="elevation-12">
-            <v-toolbar dark color="primary">
-              <v-toolbar-title>{{appName}} - Reset Password</v-toolbar-title>
-            </v-toolbar>
+            <v-app-bar dark color="primary">
+              <v-app-bar-title>{{appName}} - Reset Password</v-app-bar-title>
+            </v-app-bar>
             <v-card-text>
               <p class="subheading">Enter your new password below</p>
               <v-form @keyup.enter="submit" v-model="valid" ref="form" @submit.prevent="" lazy-validation>

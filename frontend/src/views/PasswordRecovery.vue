@@ -4,9 +4,9 @@
       <v-layout align-center justify-center>
         <v-flex xs12 sm8 md4>
           <v-card class="elevation-12">
-            <v-toolbar dark color="primary">
-              <v-toolbar-title>{{appName}} - Password Recovery</v-toolbar-title>
-            </v-toolbar>
+            <v-app-bar dark color="primary">
+              <v-app-bar-title>{{appName}} - Password Recovery</v-app-bar-title>
+            </v-app-bar>
             <v-card-text>
               <p class="subheading">A password recovery email will be sent to the registered account</p>
               <v-form @keyup.enter="submit" v-model="valid" ref="form" @submit.prevent="" lazy-validation>

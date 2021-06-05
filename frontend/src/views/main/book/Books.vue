@@ -1,9 +1,9 @@
 <template>
     <div>
-        <v-toolbar light>
-            <v-toolbar-title>
+        <v-app-bar light>
+            <v-app-bar-title>
                 Daftar Buku
-            </v-toolbar-title>
+            </v-app-bar-title>
             <v-spacer></v-spacer>
             <v-btn
                 v-show="hasAdminAccess"
@@ -11,7 +11,7 @@
                 to="/main/book/create"
                 >Tambah Buku
             </v-btn>
-        </v-toolbar>
+        </v-app-bar>
         <v-data-table :headers="headers" :items="books">
             <template slot="items" slot-scope="props">
                 <td>{{ props.item.title }}</td>
