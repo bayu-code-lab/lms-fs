@@ -23,8 +23,8 @@ def read_books(
     # if crud.user.is_superuser(current_user):
     #     books = crud.book.get_multi(db, skip=skip, limit=limit)
     # else:
-    books = crud.book.get_multi_by_owner(
-        db=db, owner_id=current_user.id, skip=skip
+    books = crud.book.get_multi(
+        db=db, skip=skip
     )
     return books
 

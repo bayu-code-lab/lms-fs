@@ -23,8 +23,8 @@ def read_customers(
     if crud.user.is_superuser(current_user):
         customers = crud.customer.get_multi(db, skip=skip)
     else:
-        customers = crud.customer.get_multi_by_owner(
-            db=db, owner_id=current_user.id, skip=skip
+        customers = crud.customer.get_multi(
+            db=db, skip=skip
         )
     return customers
 

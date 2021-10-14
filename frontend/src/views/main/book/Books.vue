@@ -73,7 +73,7 @@ export default class Books extends Vue {
         {
             text: 'Penerbit',
             sortable: true,
-            value: 'author',
+            value: 'publisher',
             align: 'left',
         },
         {
@@ -85,7 +85,7 @@ export default class Books extends Vue {
         {
             text: 'Kode ISBN',
             sortable: true,
-            value: 'author',
+            value: 'isbn',
             align: 'left',
         },
         {
