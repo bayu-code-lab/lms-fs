@@ -21,10 +21,10 @@ def read_customers(
     Retrieve customers.
     """
     if crud.user.is_superuser(current_user):
-        customers = crud.customer.get_multi(db, skip=skip, limit=limit)
+        customers = crud.customer.get_multi(db, skip=skip)
     else:
         customers = crud.customer.get_multi_by_owner(
-            db=db, owner_id=current_user.id, skip=skip, limit=limit
+            db=db, owner_id=current_user.id, skip=skip
         )
     return customers
 
@@ -49,7 +49,7 @@ def create_customer(
     Create new customer.
     """
     if crud.customer.get_by_customer_id(db, id=customer_in.id):
-        raise HTTPException(status_code=400, detail="ID already exist")
+        raise HTTPException(status_code=400, detail="NIK/NISN sudah terdaftar di database")
     customer = crud.customer.create_with_owner(db=db, obj_in=customer_in, owner_id=current_user.id)
     return customer
 

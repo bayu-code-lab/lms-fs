@@ -24,7 +24,7 @@ def read_book_transactions(
     #     bookTransactions = crud.bookTransaction.get_multi(db, skip=skip, limit=limit)
     # else:
     book_transactions = crud.book_transaction.get_multi_by_owner(
-        db=db, owner_id=current_user.id, skip=skip, limit=limit
+        db=db, owner_id=current_user.id, skip=skip
     )
     return book_transactions
 
