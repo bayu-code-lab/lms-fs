@@ -67,7 +67,7 @@ export default class Books extends Vue {
         {
             text: 'Kategori',
             sortable: true,
-            value: 'category_desc',
+            value: 'category_id',
             align: 'left',
         },
         {
