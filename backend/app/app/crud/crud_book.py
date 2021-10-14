@@ -26,6 +26,7 @@ class CRUDBook(CRUDBase[Book, BookCreate, BookUpdate]):
     ) -> List[Book]:
         result = list()
         for a, b in db.query(self.model, BookCategory).filter(self.model.category_id == BookCategory.id).offset(skip).limit(limit).all():
+            print(a,b)
             result.append({
                 'id': a.id,
                 'title': a.title,
@@ -37,6 +38,7 @@ class CRUDBook(CRUDBase[Book, BookCreate, BookUpdate]):
                 'isbn': a.isbn,
                 'quantity': a.quantity
             })
+        print(result)
         return result
     
     def book_search(
