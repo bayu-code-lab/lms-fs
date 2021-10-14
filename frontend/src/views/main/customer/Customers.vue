@@ -1,56 +1,41 @@
 <template>
     <div>
         <v-app-bar light>
-            <v-app-bar-title>
-                Pengaturan Kostumer
-            </v-app-bar-title>
+            <v-toolbar-title>
+                Daftar Data Murid/Guru
+            </v-toolbar-title>
             <v-spacer></v-spacer>
             <v-btn color="primary" to="/main/customer/create"
-                >Tambah Kustomer</v-btn
+                ><v-icon left>add</v-icon>Tambah</v-btn
             >
         </v-app-bar>
         <v-data-table
             :headers="headers"
             :items="customers"
-            :options="options"
-            :server-items-length="totalCustomers"
-            :loading="loading"
         >
-            <template slot="items" slot-scope="props">
-                <td>{{ props.item.id }}</td>
-                <td>{{ props.item.full_name }}</td>
-                <td>{{ props.item.grade }}</td>
-                <td>{{ props.item.major }}</td>
-                <td>{{ props.item.batch_of_year }}</td>
-                <td>{{ props.item.address }}</td>
-                <td class="justify-center layout px-0">
-                    <v-tooltip top>
-                        <span>Ubah</span>
-                        <v-btn
-                            slot="activator"
-                            flat
-                            :to="{
-                                name: 'main-customer-edit',
-                                params: { id: props.item.id },
-                            }"
-                        >
-                            <v-icon>edit</v-icon>
-                        </v-btn>
-                    </v-tooltip>
-                    <v-tooltip top>
-                        <span>Hapus</span>
-                        <v-btn
-                            slot="activator"
-                            flat
-                            :to="{
-                                name: 'main-customer-delete',
-                                params: { id: props.item.id },
-                            }"
-                        >
-                            <v-icon>delete</v-icon>
-                        </v-btn>
-                    </v-tooltip>
-                </td>
+        <template v-slot:item.actions="{ item }">
+                <v-btn
+                    text
+                    :to="{
+                        name: 'main-customer-edit',
+                        params: { id: item.id },
+                    }"
+                >
+                    <v-icon>
+                        edit
+                    </v-icon>
+                </v-btn>
+                <v-btn
+                    text
+                    :to="{
+                        name: 'main-customer-delete',
+                        params: { id: item.id },
+                    }"
+                >
+                    <v-icon>
+                        delete
+                    </v-icon>
+                </v-btn>
             </template>
         </v-data-table>
     </div>
@@ -58,8 +43,6 @@
 
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator';
-import { Store } from 'vuex';
-import { IUserProfile } from '@/interfaces';
 import { readCustomers } from '@/store/customer/getters';
 import { dispatchGetCustomer } from '@/store/customer/actions';
 
@@ -107,21 +90,11 @@ export default class Customers extends Vue {
         },
         {
             text: 'Actions',
-            value: 'id',
+            value: 'actions',
             align: 'center',
         },
     ];
 
-    @Watch('options', { deep: true })
-    public async handler(val) {
-        await console.log(val);
-        await dispatchGetCustomer(this.$store);
-        this.loading = false;
-    }
-    public optionsHandler(val){
-        // await console.log(val);
-        this.options = val;
-    }
 
     get customers() {
         return readCustomers(this.$store);

@@ -13,42 +13,29 @@
             </v-btn>
         </v-app-bar>
         <v-data-table :headers="headers" :items="books">
-            <template slot="items" slot-scope="props">
-                <td>{{ props.item.title }}</td>
-                <td>{{ props.item.year }}</td>
-                <td>{{ props.item.category_desc }}</td>
-                <td>{{ props.item.publisher }}</td>
-                <td>{{ props.item.author }}</td>
-                <td>{{ props.item.isbn }}</td>
-                <td>{{ props.item.quantity }}</td>
-                <td class="justify-center layout px-0">
-                    <v-tooltip v-show="hasAdminAccess" top>
-                        <span>Ubah</span>
-                        <v-btn
-                            slot="activator"
-                            flat
-                            :to="{
-                                name: 'main-book-edit',
-                                params: { id: props.item.id },
-                            }"
-                        >
-                            <v-icon>edit</v-icon>
-                        </v-btn>
-                    </v-tooltip>
-                    <v-tooltip v-show="hasAdminAccess" top>
-                        <span>Hapus</span>
-                        <v-btn
-                            slot="activator"
-                            flat
-                            :to="{
-                                name: 'main-book-delete',
-                                params: { id: props.item.id },
-                            }"
-                        >
-                            <v-icon>delete</v-icon>
-                        </v-btn>
-                    </v-tooltip>
-                </td>
+            <template v-slot:item.actions="{ item }">
+                <v-btn
+                    text
+                    :to="{
+                        name: 'main-book-edit',
+                        params: { id: item.id },
+                    }"
+                >
+                    <v-icon>
+                        edit
+                    </v-icon>
+                </v-btn>
+                <v-btn
+                    text
+                    :to="{
+                        name: 'main-book-delete',
+                        params: { id: item.id },
+                    }"
+                >
+                    <v-icon>
+                        delete
+                    </v-icon>
+                </v-btn>
             </template>
         </v-data-table>
     </div>
@@ -109,7 +96,7 @@ export default class Books extends Vue {
         },
         {
             text: 'Actions',
-            value: 'id',
+            value: 'actions',
             align: 'center',
         },
     ];

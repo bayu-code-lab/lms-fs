@@ -10,41 +10,42 @@
                         <v-text-field
                             label="Judul Buku"
                             v-model="title"
-                            disabled
+                            readonly
                         ></v-text-field>
                         <v-text-field
                             label="Tahun"
                             v-model="year"
                             type="number"
-                            disabled
+                            readonly
                         ></v-text-field>
                         <v-select
                             :items="categories"
                             label="Kategori"
                             item-text="desc"
-                            v-model="categoryId"
+                            v-model="selectedCategories"
                             item-value="id"
-                            disabled
+                            readonly
                         ></v-select>
                         <v-text-field
                             label="Penerbit"
                             v-model="publisher"
-                            disabled
+                            readonly
                         ></v-text-field>
                         <v-text-field
                             label="Pengarang"
                             v-model="author"
-                            disabled
+                            readonly
                         ></v-text-field>
                         <v-text-field
                             label="Kode ISBN"
                             v-model="isbn"
+                            readonly
                         ></v-text-field>
                         <v-text-field
                             label="Jumlah Buku"
                             v-model="quantity"
                             type="number"
-                            disabled
+                            readonly
                         ></v-text-field>
                     </v-form>
                 </template>
@@ -52,7 +53,7 @@
             <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn @click="cancel">Cancel</v-btn>
-                <v-btn @click="submit" :disabled="!valid">
+                <v-btn color="error" @click="submit" :disabled="!valid">
                     Delete
                 </v-btn>
             </v-card-actions>
@@ -61,7 +62,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Watch } from 'vue-property-decorator';
 import { dispatchGetBook, dispatchDeleteBook } from '@/store/book/actions';
 import { readOneBook } from '@/store/book/getters';
 import { readBookCategories } from '@/store/book_category/getters';
@@ -88,12 +89,10 @@ export default class EditBook extends Vue {
             this.isbn = this.book.isbn;
             this.author = this.book.author;
             this.quantity = Number(this.book.quantity);
-            this.selectedCategories =
-                this.categories.find(
-                    (category) => category.id === this.book?.category_id
-                ) || {};
+            this.selectedCategories = this.categories.find((category) => category.id === this.book?.category_id) || {};
         }
     }
+
     get categories() {
         return readBookCategories(this.$store);
     }
